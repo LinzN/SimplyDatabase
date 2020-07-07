@@ -25,7 +25,7 @@ public class MySQLProvider extends DatabaseProvider {
     private final int port;
     private final String database;
 
-    private MySQLProvider(String hostname, int port, String username, String password, String database) {
+    public MySQLProvider(String hostname, int port, String username, String password, String database) {
         this.username = username;
         this.password = password;
         this.port = port;

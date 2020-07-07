@@ -21,7 +21,7 @@ public class SQLiteProvider extends DatabaseProvider {
 
     private final String path;
 
-    private SQLiteProvider(String path) {
+    public SQLiteProvider(String path) {
         this.path = path;
     }
 
