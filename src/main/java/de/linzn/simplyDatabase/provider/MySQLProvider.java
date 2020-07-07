@@ -17,19 +17,27 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SQLiteProvider extends DatabaseProvider {
+public class MySQLProvider extends DatabaseProvider {
 
-    private final String path;
+    private final String username;
+    private final String password;
+    private final String hostname;
+    private final int port;
+    private final String database;
 
-    private SQLiteProvider(String path) {
-        this.path = path;
+    private MySQLProvider(String hostname, int port, String username, String password, String database) {
+        this.username = username;
+        this.password = password;
+        this.port = port;
+        this.database = database;
+        this.hostname = hostname;
     }
 
 
     @Override
-    public Connection getConnection() {
+    public Connection getConnection()  {
         try {
-            return DriverManager.getConnection("jdbc:sqlite:" + path);
+            return DriverManager.getConnection("jdbc:mysql://" + hostname + ":" + this.port + "/" + this.database, this.username, this.password);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

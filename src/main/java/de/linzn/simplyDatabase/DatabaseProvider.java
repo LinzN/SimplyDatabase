@@ -11,15 +11,13 @@
 
 package de.linzn.simplyDatabase;
 
-import de.linzn.simplyDatabase.iohub.DatabaseActions;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 
 
-public abstract class DatabaseProvider extends DatabaseActions {
+public abstract class DatabaseProvider {
 
     public abstract Connection getConnection();
 
-    public abstract void closeConnection() throws SQLException;
+    public abstract void releaseConnection(Connection connection);
 }
